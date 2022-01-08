@@ -227,3 +227,8 @@ The source code for this example is available on https://github.com/dilono/dilon
 ----
 
 NOTE: Support for a subset or a message can be added by http://dilono.com[request].
+
+
+== Integration scenarios
+
+Checkout our https://github.com/dilono/dilono-samples[repository on GitHub] with various integration scenarios.
