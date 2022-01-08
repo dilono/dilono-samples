@@ -24,7 +24,7 @@ What does Dilono NOT suppose to:
 . A valid access token.
 Can be requested https://dilono.com/[here].
 . Maven, Gradle or anything else to manage dependencies.
-. Dilono uses `slf4j-api` for logging. Any implementation of it has to defined as a dependency to the application.
+. Dilono uses `slf4j-api` for logging. Any implementation of it has to be defined as a dependency to the application.
 
 === Declare maven dependencies
 
