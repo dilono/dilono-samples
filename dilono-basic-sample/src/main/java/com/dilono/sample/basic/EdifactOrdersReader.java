@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.util.List;
 
 @Component
-class EdifactOrdersReader {
+public class EdifactOrdersReader {
 
     private final ECSClient client;
 

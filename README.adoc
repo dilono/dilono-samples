@@ -1,13 +1,17 @@
 === Overview
-Dilono integration samples.
 
+Dilono integration samples.
 
 |===
 |Sample |Description
 
 |dilono-basic-sample
-|Basic sample to demonstrate how Dilono works.
+|A basic sample to demonstrate how Dilono works
+
+|dilono-camel-sftp-sample
+|A sample to demonstrate how Dilono can be used with Apache Camel SFTP component.
 |===
 
 === Documentation
+
 http://docs.dilono.com[Dilono reference]
