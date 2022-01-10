@@ -2,19 +2,21 @@ package com.dilono.sample.basic;
 
 import com.dilono.edifact.client.ECSClient;
 import com.dilono.edifact.d96a.D96A;
+import com.dilono.test.TestResource;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class EdifactOrdersReaderTest {
+
+    private static final TestResource R = TestResource.forClass(EdifactOrdersReaderTest.class);
 
     @Autowired
     private EdifactOrdersReader ordersReader;
@@ -24,8 +26,7 @@ class EdifactOrdersReaderTest {
 
     @Test
     void shouldReadEdifactToPojo() throws Exception {
-        final String edifact = edifact();
-        final ByteArrayInputStream edifactStream = new ByteArrayInputStream(edifact.getBytes());
+        final ByteArrayInputStream edifactStream = new ByteArrayInputStream(R.getBytes("d96a-orders.edi"));
         final List<Order> orders = ordersReader.fromEdifact(edifactStream);
         assertThat(orders)
             .as("one order pojo has been created")
@@ -57,47 +58,21 @@ class EdifactOrdersReaderTest {
             .isEqualTo("4.51");
     }
 
-    private String edifact() {
-        final String edifact = "UNA:+.? '" +
-            "UNB+UNOA:2+0000000000001:14+0000000000002:14+140407:0910+5++++1+EANCOM'" +
-            "UNH+1+ORDERS:D:96A:UN:EAN008'" +
-            "BGM+220+1AA1TEST+9'" +
-            "DTM+137:20140407:102'" +
-            "DTM+63:20140421:102'" +
-            "DTM+64:20140414:102'" +
-            "RFF+ON:20140407-1/1'" +
-            "RFF+PD:1704'" +
-            "RFF+CR:ABCD5'" +
-            "NAD+BY+0000000000005::9'" +
-            "NAD+SU+0000000000002::9'" +
-            "NAD+DP+0000000000004::9+++++++DE'" +
-            "NAD+IV+0000000000004::9++Muster GmbH+Berlin++Muster str. 23+DE'" +
-            "RFF+VA:DE123456789'" +
-            "CUX+2:EUR:9'" +
-            "LIN+1++9783898307529:EN'" +
-            "QTY+21:5'" +
-            "PRI+AAA:27.5'" +
-            "LIN+2++9783898307539:EN'" +
-            "QTY+21:1'" +
-            "PRI+AAA:10.87'" +
-            "LIN+3++97838983938472:EN'" +
-            "QTY+21:3'" +
-            "PRI+AAA:3.85'" +
-            "PRI+AAB:4.51'" +
-            "UNS+S'" +
-            "CNT+2:3'" +
-            "UNT+27+1'" +
-            "UNZ+1+5'";
-        return edifact;
-    }
-
 
     @Test
     void docSnippetsWork() {
-        final byte[] edifact = edifact().getBytes(StandardCharsets.UTF_8);
-        Assertions.assertThatCode(() -> new Snippet1().fromEdifact(edifact)).doesNotThrowAnyException();
-        Assertions.assertThatCode(() -> new Snippet2().fromEdifact(edifact)).doesNotThrowAnyException();
-        Assertions.assertThatCode(() -> new Snippet3().fromEdifact(edifact)).doesNotThrowAnyException();
+        Assertions.assertThatCode(() -> new Snippet1().fromEdifact(R.getBytes("d96a-orders.edi")))
+            .as("code snippet can process file")
+            .doesNotThrowAnyException();
+
+        Assertions.assertThatCode(() -> new Snippet2().fromEdifact(R.getBytes("d96a-orders.edi")))
+            .as("code snippet can process file")
+            .doesNotThrowAnyException();
+
+        Assertions.assertThatCode(() -> new Snippet3().fromEdifact(R.getBytes("d96a-orders.edi")))
+            .as("code snippet can process file")
+            .doesNotThrowAnyException();
+
     }
 
     private static Order.LineItem newLineItem(Order myOrder) {
