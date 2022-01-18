@@ -211,9 +211,9 @@ include::../../test/resources/fixtures/EdifactInvoicWriterTest/snippet3.edi[]
 
 The source code for this example is available on https://github.com/dilono/dilono-samples[GitHub].
 
-== Supported message types
+== Supported subsets
 
-. Currently supported message types
+. Currently supported subsets and their message types
 [source%nowrap,json]
 ----
 {
