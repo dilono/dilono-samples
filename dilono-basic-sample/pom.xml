@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.dilono</groupId>
         <artifactId>dilono-suite</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>2022.02</version>
     </parent>
 
     <distributionManagement>

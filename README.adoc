@@ -10,6 +10,9 @@ Dilono integration samples.
 
 |dilono-camel-sftp-sample
 |A sample to demonstrate how Dilono can be used with Apache Camel SFTP component.
+
+|dilono-azure-functions
+|A sample to demonstrate how Dilono can be leveraged as Azure Function.
 |===
 
 === Documentation
