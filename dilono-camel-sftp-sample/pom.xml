@@ -5,7 +5,7 @@
     <parent>
         <artifactId>dilono-suite</artifactId>
         <groupId>com.dilono</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>2022.02</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

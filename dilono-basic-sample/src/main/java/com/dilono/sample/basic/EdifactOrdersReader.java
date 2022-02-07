@@ -15,11 +15,11 @@ public class EdifactOrdersReader {
 
     private final ECSClient client;
 
-    EdifactOrdersReader(ECSClient client) {
+    public EdifactOrdersReader(ECSClient client) {
         this.client = client;
     }
 
-    List<Order> fromEdifact(final InputStream edifact) throws Exception {
+    public List<Order> fromEdifact(final InputStream edifact) throws Exception {
         return D96A.reader(client, IOUtils.toByteArray(edifact))
             .orders(() -> new Order(), (orders, myOrder) -> orders
                 .bgm(bgm -> bgm

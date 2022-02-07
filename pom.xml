@@ -6,22 +6,25 @@
 
     <groupId>com.dilono</groupId>
     <artifactId>dilono-suite</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>2022.02</version>
 
     <name>dilono-suite</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <docs.version>/preview</docs.version>
         <generatedDocsDirectory>${project.build.directory}/site</generatedDocsDirectory>
         <versions.spring.boot>2.6.2</versions.spring.boot>
         <versions.asciidoctor.maven.plugin>2.2.1</versions.asciidoctor.maven.plugin>
-        <versions.camel>3.14.0</versions.camel>
-        <versions.dilono-edifact>2.2.49</versions.dilono-edifact>
+        <versions.dilono-edifact>2.2.55</versions.dilono-edifact>
+        <versions.camel>3.14.1</versions.camel>
         <versions.asciidoctorj>2.5.2</versions.asciidoctorj>
         <versions.jruby>9.2.17.0</versions.jruby>
+        <versions.azure.functions.java.library>1.4.2</versions.azure.functions.java.library>
+        <versions.azure.functions.maven.plugin>1.15.0</versions.azure.functions.maven.plugin>
     </properties>
 
     <!-- tag::maven-repositories[] -->
@@ -36,6 +39,7 @@
     <modules>
         <module>dilono-basic-sample</module>
         <module>dilono-camel-sftp-sample</module>
+        <module>dilono-azure-functions</module>
     </modules>
 
     <dependencyManagement>
@@ -58,6 +62,11 @@
                 <version>${versions.camel}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.microsoft.azure.functions</groupId>
+                <artifactId>azure-functions-java-library</artifactId>
+                <version>${versions.azure.functions.java.library}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -109,9 +118,28 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M5</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.microsoft.azure</groupId>
+                    <artifactId>azure-functions-maven-plugin</artifactId>
+                    <version>${versions.azure.functions.maven.plugin}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
