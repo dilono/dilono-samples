@@ -40,6 +40,7 @@
         <module>dilono-basic-sample</module>
         <module>dilono-camel-sftp-sample</module>
         <module>dilono-azure-functions</module>
+        <module>dilono-picocli-application</module>
     </modules>
 
     <dependencyManagement>
@@ -68,6 +69,12 @@
                 <artifactId>azure-functions-java-library</artifactId>
                 <version>${versions.azure.functions.java.library}</version>
             </dependency>
+            <dependency>
+                <groupId>info.picocli</groupId>
+                <artifactId>picocli</artifactId>
+                <version>4.6.2</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -127,6 +134,11 @@
                     <groupId>com.microsoft.azure</groupId>
                     <artifactId>azure-functions-maven-plugin</artifactId>
                     <version>${versions.azure.functions.maven.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${versions.spring.boot}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -13,6 +13,9 @@ Dilono integration samples.
 
 |dilono-azure-functions
 |A sample to demonstrate how Dilono can be leveraged as Azure Function.
+
+|dilono-picocli-application
+|A sample to demonstrate how Dilono can be leveraged as a CLI application.
 |===
 
 === Documentation
